@@ -1,0 +1,12 @@
+.btnPrev {
+  width: 200px;
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+  transition: 0.3s ease;
+  color: #6c757d !important;
+
+  &:hover{
+    background-color: #eeeeee !important;
+    border-color: #eeeeee !important;
+  }
+}
