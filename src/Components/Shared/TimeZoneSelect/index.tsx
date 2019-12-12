@@ -47,7 +47,7 @@ const TimeZoneSelect : React.FC<Props> = ({timezone, disabled}) => {
       return setOpt(myOpt)
     }
     setUserTimeZone(timezone)
-  }, [userTimeZone])
+  }, [userTimeZone, timezone])
 
   return (
     <Field
