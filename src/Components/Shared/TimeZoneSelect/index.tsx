@@ -25,19 +25,28 @@ const customStyles = {
   }),
 }
 
-interface IProps{
+interface OwnProps {
   disabled: boolean
 }
 
-const TimeZoneSelect : React.FC<IProps> = ({disabled}) => {
+interface StateProps {
+  timezone: string
+}
+
+type Props = StateProps & OwnProps
+
+const TimeZoneSelect : React.FC<Props> = ({timezone, disabled}) => {
   const [userTimeZone, setUserTimeZone] = useState('')
   const [opt, setOpt] = useState([])
   useEffect(() => {
-    setUserTimeZone(moment.tz.guess())
-    const timezones = moment.tz.names()
-    const myOpt: any = []
-    timezones.forEach(el => myOpt.push({ label: el, value: el }))
-    setOpt(myOpt)
+    if (!timezone) {
+      setUserTimeZone(moment.tz.guess())
+      const timezones = moment.tz.names()
+      const myOpt: any = []
+      timezones.forEach(el => myOpt.push({ label: el, value: el }))
+      return setOpt(myOpt)
+    }
+    setUserTimeZone(timezone)
   }, [userTimeZone])
 
   return (
@@ -54,8 +63,8 @@ const TimeZoneSelect : React.FC<IProps> = ({disabled}) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    timeZone: selectors.timezoneSelector(state),
+    timezone: selectors.timezoneSelector(state),
   }
 }
 
-export default connect(mapStateToProps, null)(TimeZoneSelect)
+export default connect<StateProps, OwnProps>(mapStateToProps)(TimeZoneSelect)
