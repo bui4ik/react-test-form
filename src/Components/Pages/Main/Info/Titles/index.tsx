@@ -6,6 +6,7 @@ const texts = [
   ['Tracking company vehicles? (optional)'],
   ['Set your time Zone'],
   ['Check your data'],
+  ['Congratulations! Your account has been created']
 ]
 
 const TitlesSwitch = ({ step }: any) => (

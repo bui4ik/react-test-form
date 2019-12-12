@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import NextButton from '../../../Shared/NextButton'
 import { connect } from 'react-redux';
 import { Alert } from 'react-bootstrap'
-import styles from '../index.module.scss'
-import { Form, Field } from 'react-final-form'
+import { Form } from 'react-final-form'
 import * as selectors from '../../../../store/form/selectors';
 import { setEmail } from "../../../../store/form/actions";
 import { emailValidation } from '../../../../utils/validation'
 import {checkIsEmailExists} from "../../../../api/requests/form";
+import EmailInput from "../../../Shared/EmailInput";
 
 const StepOne = ({ step, setStep, setEmail, email }: any) => {
   const [error, setError] = useState('')
@@ -40,18 +40,10 @@ const StepOne = ({ step, setStep, setEmail, email }: any) => {
         initialValues={{ email }}
         render={({ handleSubmit, submitting }) => (
           <form onSubmit={handleSubmit}>
-            <div>
-              <Field
-                name="email"
-                component="input"
-                type="text"
-                placeholder="E-mail"
-                className={`form-control mb-3 ${styles.customInput}`}
-              />
+              <EmailInput disabled={false}/>
               <h5 className="text-center text-secondary mb-4 font-weight-light">
                 We'll email a link to create a password for your new account
               </h5>
-            </div>
             <NextButton disabled={submitting}/>
           </form>
         )}

@@ -18,7 +18,6 @@ const StepFour = ({ step, setStep, setTimeZone, timeZone, onPrevBtnClick }: any)
 
     const onSubmit = async (values: any) => {
         if (error.length > 0) setError([])
-        console.log(values)
         const newErrors = timeZoneValidation(values)
         if (newErrors) {
             const result: any = Object.values(newErrors).map((el: any) => el[0])
@@ -41,7 +40,7 @@ const StepFour = ({ step, setStep, setTimeZone, timeZone, onPrevBtnClick }: any)
                 onSubmit={onSubmit}
                 render={({ handleSubmit, submitting }) => (
                     <form onSubmit={handleSubmit}>
-                        <TimeZoneSelect />
+                        <TimeZoneSelect disabled={false}/>
                         <NextButton disabled={submitting}/>
                         <PrevButton onPrevBtnClick={onPrevBtnClick}/>
                     </form>

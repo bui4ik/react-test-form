@@ -1,5 +1,5 @@
 import Select from "react-select";
-import React from "react";
+import React, {useEffect} from "react";
 import {Field} from "react-final-form";
 import * as selectors from "../../../store/form/selectors";
 import {connect} from "react-redux";
@@ -22,21 +22,35 @@ const customStyles = {
     }),
     control: (provided: any) => ({
         ...provided,
-        marginBottom: '2rem',
+        marginBottom: '1rem',
         backgroundColor: '#f6f6f6',
         height: '50px',
         fontSize: '20px',
     }),
 }
 
-const GenderSelect = ({gender}: any) => {
+interface OwnProps {
+    disabled: boolean
+}
+
+interface StateProps {
+    gender: string
+}
+
+type Props = StateProps & OwnProps
+
+const GenderSelect: React.FC<Props> = ({gender, disabled}) => {
+    useEffect(() => {
+        console.log(gender)
+    })
     return (
         <Field
-            name="state"
+            name="gender"
             component={ReactSelectAdapter}
             options={options}
             styles={customStyles}
-            defaultValue={gender && { label: gender, value: gender }}
+            defaultValue={gender && { value: gender, label: gender }}
+            isDisabled={disabled}
         />
     )
 };
@@ -47,4 +61,4 @@ const mapStateToProps = (state: any) => {
     }
 }
 
-export default connect(mapStateToProps, null)(GenderSelect)
+export default connect<StateProps, OwnProps>(mapStateToProps)(GenderSelect)

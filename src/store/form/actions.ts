@@ -7,7 +7,7 @@ export const setEmail = (email: any) => ({
     type: SET_EMAIL,
     payload: { email }
 });
-export const setUserProfile = ({firstName, lastName, state: {value}} : any) => ({
+export const setUserProfile = ({firstName, lastName, gender: {value}} : any) => ({
     type: SET_USER_PROFILE,
     payload: {firstName, lastName, value}
 })
@@ -15,7 +15,7 @@ export const setCompany = (company: any) => ({
     type: SET_COMPANY,
     payload: { company }
 })
-export const setTimezone = ({state: {value}}: any) => ({
+export const setTimezone = ({timezone: {value}}: any) => ({
    type: SET_TIMEZONE,
    payload: { value }
 });

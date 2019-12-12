@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { companyValidation } from '../../../../utils/validation'
 import { Alert } from 'react-bootstrap'
-import { Field, Form } from 'react-final-form'
+import { Form } from 'react-final-form'
 import styles from '../index.module.scss'
 import NextButton from '../../../Shared/NextButton'
 import * as selectors from '../../../../store/form/selectors'
 import { setCompany } from '../../../../store/form/actions'
 import { connect } from 'react-redux'
 import PrevButton from '../../../Shared/PrevButton'
+import CompanyInput from "../../../Shared/CompanyInput";
 
 const StepThree = ({ step, setStep, company, setCompany, onPrevBtnClick }: any) => {
   const [error, setError] = useState([])
@@ -23,7 +24,6 @@ const StepThree = ({ step, setStep, company, setCompany, onPrevBtnClick }: any) 
       const result: any = Object.values(newErrors).map((el: any) => el[0])
       return setError(result)
     }
-    console.log(values)
     setCompany(values)
     setStep(step + 1)
   }
@@ -47,15 +47,7 @@ const StepThree = ({ step, setStep, company, setCompany, onPrevBtnClick }: any) 
         initialValues={{ company }}
         render={({ handleSubmit, submitting, pristine }) => (
           <form onSubmit={handleSubmit}>
-            <div>
-              <Field
-                name="company"
-                component="input"
-                type="text"
-                placeholder="Company"
-                className={`form-control mb-3 ${styles.customInput}`}
-              />
-            </div>
+            <CompanyInput disabled={false}/>
             {pristine ? (
               <button
                 className={`float-right mb-3 btn btn-primary btn-lg ${styles.btnNext}`}
@@ -76,7 +68,7 @@ const StepThree = ({ step, setStep, company, setCompany, onPrevBtnClick }: any) 
 
 const mapStateToProps = (state: any) => {
   return {
-    companyName: selectors.companySelector(state),
+    company: selectors.companySelector(state),
   }
 }
 

@@ -13,3 +13,19 @@
     cursor: not-allowed;
   }
 }
+
+.btnCreate {
+  background-color: #e91e63 !important;
+  border-color: #e91e63 !important;
+  width: 100%;
+  transition: 0.3s ease;
+
+  &:hover{
+    background-color: #d81b60 !important;
+    border-color: #d81b60 !important;
+  }
+
+  &:disabled{
+    cursor: not-allowed;
+  }
+}

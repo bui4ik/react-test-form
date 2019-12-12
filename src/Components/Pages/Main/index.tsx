@@ -6,15 +6,10 @@ import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
 import StepThree from "./StepThree";
 import StepFour from "./StepFour";
-import StepFive from "./StetFive";
+import StepFive from "./StepFive";
 
 const Main = () => {
-  const [step, setStep] = useState(4);
-
-  const onSubmit = (e: any) => {
-      e.preventDefault();
-      setStep(step + 1)
-  };
+  const [step, setStep] = useState(1);
 
   const onPrevBtnClick = (e : any) => {
         e.preventDefault();
@@ -29,7 +24,7 @@ const Main = () => {
         <StepTwo setStep={setStep} step={step} onPrevBtnClick={onPrevBtnClick}/>
         <StepThree setStep={setStep} step={step} onPrevBtnClick={onPrevBtnClick}/>
         <StepFour setStep={setStep} step={step} onPrevBtnClick={onPrevBtnClick}/>
-        <StepFive onSubmit={onSubmit} onSubmitPrev={onPrevBtnClick} step={step}/>
+        <StepFive setStep={setStep} step={step} onPrevBtnClick={onPrevBtnClick}/>
       </div>
     </Container>
   )

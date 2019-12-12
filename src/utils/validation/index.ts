@@ -11,7 +11,7 @@ export const emailValidation = (values: any) => {
   return validate(values, constraints)
 }
 
-export const profileValidation = ({ firstName, lastName, state }: any) => {
+export const profileValidation = ({ firstName, lastName,  gender}: any) => {
   const constraints = {
     firstName: {
       presence: true,
@@ -30,7 +30,7 @@ export const profileValidation = ({ firstName, lastName, state }: any) => {
     },
   }
 
-  return validate({ firstName, lastName, gender: state }, constraints)
+  return validate({ firstName, lastName, gender }, constraints)
 }
 
 export const companyValidation = (values: any) => {
@@ -46,12 +46,12 @@ export const companyValidation = (values: any) => {
   return validate(values, constraints)
 }
 
-export const timeZoneValidation = ({ state }: any) => {
+export const timeZoneValidation = ({ timezone }: any) => {
   const constraints = {
     timezone: {
       presence: { message: 'is required' },
     },
   }
 
-  return validate({ timezone: state }, constraints)
+  return validate({ timezone }, constraints)
 }
