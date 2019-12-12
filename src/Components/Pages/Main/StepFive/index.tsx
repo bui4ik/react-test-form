@@ -16,7 +16,7 @@ const StepFive = ({ step, setStep, firstName, lastName, company, email }: any) =
     return null
   }
 
-  const onSubmit = async (values: any) => {
+  const onSubmit = async () => {
     setStep(step + 1)
   }
 
